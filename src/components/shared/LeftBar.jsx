@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 //Icons
@@ -6,12 +6,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import InfoIcon from "@mui/icons-material/Info";
 
 //Li icons
+import HomeIcon from "@mui/icons-material/Home";
 import ImportContactsIcon from "@mui/icons-material/ImportContacts";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import WorkIcon from "@mui/icons-material/Work";
 import LanguageIcon from "@mui/icons-material/Language";
 
 const navBarList = [
+  { name: "Home", icon: HomeIcon, path: "/" },
   { name: "Recipes", icon: ImportContactsIcon, path: "/recipes" },
   { name: "Favorites", icon: FavoriteIcon, path: "/favorites" },
   { name: "Courses", icon: WorkIcon, path: "/courses" },
@@ -19,13 +21,27 @@ const navBarList = [
 ];
 
 const LeftBAr = () => {
-  const [isNavOpen, setNavOpen] = useState(false);
+  const [isNavOpen, setNavOpen] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 900) setNavOpen(false);
+      else setNavOpen(true);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div
-      className={`h-full flex flex-col justify-around ${
+      className={`h-full flex bg-white flex-col justify-around ${
         isNavOpen ? "w-[200px]" : "w-[60px]"
-      } overflow-hidden absolute z-50 transition-all min-w-[60px] border border-r ease-linear duration-200 `}
+      } overflow-hidden  transition-all min-w-[60px] border border-r ease-in-out duration-300 `}
     >
       {/* Logo section */}
       <div className="flex justify-between py-8 items-center px-2 w-full h-[120px] overflow-hidden">
@@ -44,7 +60,7 @@ const LeftBAr = () => {
 
       {/* Profile Image Section */}
 
-      <div className="flex flex-col my-3 gap-2 items-center">
+      <div className="flex flex-col my-2 gap-2 items-center">
         <div
           className={`${
             isNavOpen ? "p-2" : "p-1"
@@ -85,13 +101,13 @@ const LeftBAr = () => {
       <div className="w-full h-[calc(100vh-120px)] flex flex-col justify-between">
         <ul
           className={` ${
-            isNavOpen ? "pl-7" : "pl-2"
+            isNavOpen ? "pl-6" : "pl-2"
           } mt-3 flex flex-col gap-1 overflow-hidden`}
         >
           {navBarList.map((list, index) => (
             <li key={index}>
               <Link
-                className="group p-4 flex items-center font-inter text-[.9rem] text-[#000000a2] hover:bg-[#e7e7e7] hover:text-black cursor-pointer rounded-tl-lg rounded-bl-lg transition-all duration-300 ease-out gap-4"
+                className="group p-4 py-3 flex items-center font-inter text-[.9rem] text-[#000000a2] hover:bg-[#e7e7e7] hover:text-black cursor-pointer rounded-tl-lg rounded-bl-lg transition-all duration-300 ease-out gap-4"
                 to={list.path}
               >
                 <list.icon
@@ -139,7 +155,10 @@ const LeftBAr = () => {
           </div>
         ) : (
           <div className="flex w-full h-auto">
-            <InfoIcon className="text-gray-500 mx-auto" />
+            <InfoIcon
+              onClick={() => setNavOpen(!isNavOpen)}
+              className="text-gray-500 mt-2 mx-auto cursor-pointer"
+            />
           </div>
         )}
       </div>
