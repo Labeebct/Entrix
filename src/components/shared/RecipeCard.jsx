@@ -4,9 +4,9 @@ import Rating from "@mui/material/Rating";
 
 const RecipeCard = ({ recipe }) => {
   return (
-    <div className="relative w-72 h-[390px] shadow-box p-4 bg-white rounded-xl">
+    <div className="group cursor-pointer relative mt-10 hover:-translate-y-5 duration-300 ease-in-out flex-1 min-w-[280px] h-[380px] shadow-box p-4 bg-white rounded-xl">
       <div className="flex flex-col gap-6 items-center">
-        <div className="w-24 h-24 absolute -top-14 rounded-full">
+        <div className="w-[85px] h-[85px] z-20 absolute -top-12 rounded-full">
           <img
             src={recipe.image}
             alt="Noodle chicken soup"
@@ -43,9 +43,10 @@ const RecipeCard = ({ recipe }) => {
             </span>
           </div>
         </div>
-
-        <Rating defaultValue={recipe.rating} readOnly />
-        <button className="w-full absolute bottom-0 left-0 right-0 py-4 mt-2 text-sm font-bold font-inter text-[1.1rem] border-t text-gray-700 flex items-center justify-center gap-2">
+        <div className="flex justify-center  items-center absolute bottom-20 left-0 right-0">
+          <Rating defaultValue={Math.floor(recipe.rating)} readOnly />
+        </div>
+        <button className="w-full group-hover:bg-red-500  absolute bottom-0 left-0 right-0 py-5 mt-2 text-sm font-bold font-inter text-[1.1rem] border-t  text-black group-hover:text-white flex items-center justify-center gap-2">
           Start cooking
         </button>
       </div>

@@ -39,7 +39,7 @@ const LeftBAr = () => {
 
   return (
     <div
-      className={`h-full flex bg-white flex-col justify-around ${
+      className={`h-full flex top-0 left-0 bottom-0 absolute md:relative z-[999] bg-white flex-col justify-around ${
         isNavOpen ? "w-[200px]" : "w-[60px]"
       } overflow-hidden  transition-all min-w-[60px] border border-r ease-in-out duration-300 `}
     >
