@@ -86,7 +86,7 @@ const LeftBAr = () => {
             isNavOpen ? "text-[.8rem]" : "text-[.4rem]"
           }`}
         >
-          Chat de Prtie
+          Chat de Partie
         </p>
         <div className="flex items-center gap-1 px-2 rounded-full bg-white border py-[.2rem] shadow-box">
           <WorkIcon

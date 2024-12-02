@@ -16,7 +16,7 @@ const Header = () => {
       </div>
       <div className="flex flex-1 justify-end items-center gap-5">
         <img src="/assets/adjust-iconp.png" className="w-6 h-6" alt="" />
-        <button className="p-3 px-4 shadow-xl bg-red-500 text-white font-inter font-semibold rounded-md text-[.76rem] md:text-[.84rem] lg:text-[.87rem] xl:text-[.9rem]">
+        <button className="py-3 px-4 active:scale-[.95] duration-100 ease-in-out shadow-xl bg-red-500 text-white font-inter font-semibold rounded-md text-[.76rem] md:text-[.84rem] lg:text-[.87rem]">
           Go to Premium
         </button>
       </div>
