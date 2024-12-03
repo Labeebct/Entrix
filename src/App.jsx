@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import Layout from "./layout/layout";
+import Layout from "./Layout/layout";
 
 //Importing all pages
 import Community from "./pages/Community";

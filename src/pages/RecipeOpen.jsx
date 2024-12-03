@@ -13,10 +13,10 @@ const RecipeOpen = () => {
       setOpenedRecipe(recipe);
       console.log(recipe);
     }
-  }, [recipes, params.id]); // Add dependencies to re-run when recipes change
+  }, [recipes, params.id]);
 
   if (!openedRecipe) {
-    return <p>Loading recipe...</p>; // Show a loading state
+    return <p>Loading recipe...</p>;
   }
 
   return (
