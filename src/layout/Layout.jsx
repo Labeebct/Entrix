@@ -9,7 +9,7 @@ const Layout = () => {
   return (
     <div className="flex overflow-hidden w-full h-screen">
       <LeftBar />
-      <div className="bg-[#fcf4f1] ml-[60px] md:ml-0 overflow-y-auto h-full flex-1 grid grid-cols-1">
+      <div className="bg-[#fcf4f1] ml-[60px] md:ml-0 h-full flex-1">
         <Header />
         <Outlet />
       </div>

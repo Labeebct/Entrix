@@ -1,10 +1,16 @@
 import React from "react";
 import KebabDiningIcon from "@mui/icons-material/KebabDining";
 import Rating from "@mui/material/Rating";
+import { useNavigate } from "react-router-dom";
 
 const RecipeCard = ({ recipe }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="group cursor-pointer relative mt-10 hover:-translate-y-5 duration-300 ease-in-out flex-1 min-w-[280px] h-[380px] shadow-box p-4 bg-white rounded-xl">
+    <div
+      onClick={() => navigate(`/recipe-view/${recipe.id}`)}
+      className="group cursor-pointer relative mt-10 hover:-translate-y-5 duration-300 ease-in-out flex-1 min-w-[280px] h-[380px] shadow-box p-4 bg-white rounded-xl"
+    >
       <div className="flex flex-col gap-6 items-center">
         <div className="w-[85px] h-[85px] z-20 absolute -top-12 rounded-full">
           <img

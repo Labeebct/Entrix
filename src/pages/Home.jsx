@@ -8,7 +8,9 @@ import { useRecipes } from "../context/RecipeData";
 const Home = () => {
     // Context Data
     const recipes = useRecipes();
+    
   return (
+    <div className="bg-[#fcf4f1] ml-[60px] md:ml-0 overflow-y-auto h-full flex-1 grid grid-cols-1">
     <div className="px-5 mb-5">
       <BestRecipe />
       <div className="grid gap-y-14 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
@@ -21,6 +23,7 @@ const Home = () => {
           <RecipeCard recipe={recipe} key={index + 3} />
         ))}
       </div>
+    </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Community from "./pages/Community";
 import Courses from "./pages/Courses";
 import Favourites from "./pages/Favourites";
 import Home from "./pages/Home";
+import RecipeOpen from "./pages/RecipeOpen";
 import Recipes from "./pages/Recipes";
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/courses" element={<Courses />} />
         <Route path="/favorites" element={<Favourites />} />
         <Route path="/recipes" element={<Recipes />} />
+        <Route path="/recipe-view/:id" element={<RecipeOpen />} />
       </Route>
     </Routes>
   );
