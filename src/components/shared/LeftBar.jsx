@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 //Icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -21,7 +21,36 @@ const navBarList = [
 ];
 
 const LeftBAr = () => {
+
+  const [page, setPage] = useState("/");
   const [isNavOpen, setNavOpen] = useState(true);
+
+  //Finding location for finding the active page
+  const location = useLocation();
+  const currentLocation = location.pathname;
+
+  useEffect(() => {
+    switch (currentLocation) {
+      case "/":
+        setPage("/");
+        break;
+      case "/recipes":
+        setPage("/recipes");
+        break;
+      case "/favorites":
+        setPage("/favorites");
+        break;
+      case "/courses":
+        setPage("/courses");
+        break;
+      case "/community":
+        setPage("/community");
+        break;
+      default:
+        setPage("");
+        break;
+    }
+  }, [currentLocation]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -107,12 +136,12 @@ const LeftBAr = () => {
           {navBarList.map((list, index) => (
             <li key={index}>
               <Link
-                className="group p-4 py-3 flex items-center font-inter text-[.9rem] text-[#000000a2] hover:bg-[#e7e7e7] hover:text-black cursor-pointer rounded-tl-lg rounded-bl-lg transition-all duration-300 ease-out gap-4"
+                className={`group p-4 py-3 ${page == list.path && 'bg-[#e7e7e7]' } flex items-center font-inter text-[.9rem] hover:bg-[#e7e7e7] hover:text-black cursor-pointer rounded-tl-lg rounded-bl-lg transition-all duration-300 ease-out gap-4`}
                 to={list.path}
               >
                 <list.icon
                   sx={{ fontSize: 19 }}
-                  className="text-current group-hover:text-red-500"
+                  className={`text-current ${page == list.path ? 'text-red-500' : 'text-[#00000086]'  } group-hover:text-red-500`}
                 />
                 {list.name}
               </Link>
